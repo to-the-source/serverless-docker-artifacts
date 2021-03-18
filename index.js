@@ -57,7 +57,7 @@ class ServerlessDockerArtifacts {
 
   clean() {
     return BbPromise.all(this.artifacts.map(art =>
-        fse.removeAsync(art.copy)
+        //fse.removeAsync(art.copy)
     ));
   }
 
