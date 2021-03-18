@@ -57,7 +57,7 @@ class ServerlessDockerArtifacts {
 
   clean() {
     return BbPromise.all(this.artifacts.map(art =>
-        //fse.removeAsync(art.copy)
+        fse.removeAsync(art.copy)
     ));
   }
 
@@ -91,7 +91,7 @@ class ServerlessDockerArtifacts {
 
     this.hooks = {
       "before:package:createDeploymentArtifacts": () => this.create(),
-      "after:package:createDeploymentArtifacts": () => this.clean(),
+      // "after:package:createDeploymentArtifacts": () => this.clean(),
 
       "dockart:create:create": () => this.create(),
       "dockart:clean:clean": () => this.clean(),
