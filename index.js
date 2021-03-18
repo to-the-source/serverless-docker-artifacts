@@ -90,7 +90,10 @@ class ServerlessDockerArtifacts {
     };
 
     this.hooks = {
-      "before:package:createDeploymentArtifacts": () => this.create(),
+      "before:package:createDeploymentArtifacts": async () => {
+        await this.clean();
+        await this.create();
+      },
       // "after:package:createDeploymentArtifacts": () => this.clean(),
 
       "dockart:create:create": () => this.create(),
